@@ -458,22 +458,43 @@
 
                                     <div class="col-lg-6 col-6">
                                         <label for="email" class="form-label">Email <sup class="text-danger">*</sup></label>
-
-                                        <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Email" required>
+                                        <fieldset>
+                                            <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Email" required></fieldset>
                                     </div>
 
                                     <div class="col-12 my-4">
+                                        <fieldset>
                                         <label for="message" class="form-label">Asunto</label>
 
                                         <textarea name="message" rows="6" class="form-control" id="message" placeholder="Escribe tu asunto" required></textarea>
-                                        
+                                        </fieldset>
                                     </div>
 
                                 </div>
-
+                            
                                 <div class="col-lg-5 col-12 mx-auto mt-5">
-                                    <button type="submit" class="form-control">Enviar mensaje</button>
+                                    <fieldset>
+                                    <button type="submit" id="intento" class="form-control">Enviar mensaje</button>
+                                        <script>
+                                        $("#intento").click(function(event){
+                                            event.preventDefault()
+                                            var message=$("#message").val()
+                                            var email=$("#email").val()
+                                            alert("click")
+                                            fetch("https://backend.sitelectronics.com/contact",{
+                                                headers:{
+                                                    "Accept":"application/json",
+                                                    "Content-Type":"application/json"
+                                                },
+                                                method:"POST",
+                                                body:JSON.stringify({text:message,from:email})
+                                                
+                                            })
+                                        })
+                                        </script>
+                                          </fieldset> 
                                 </div>
+                                         
                             </form>
                         </div>
 
@@ -513,15 +534,15 @@
 
                     <div class="col-lg-3 col-5 ms-auto">
                         <ul class="social-icon">
-                            <li><a href="#" class="social-icon-link bi-facebook"></a></li>
+                            <li><a href="https://www.facebook.com/sitelectronics1" class="social-icon-link bi-facebook"></a></li>
 
                             <li><a href="#" class="social-icon-link bi-twitter"></a></li>
 
-                            <li><a href="#" class="social-icon-link bi-whatsapp"></a></li>
+                            <li><a href="https://wa.me/56999855729" class="social-icon-link bi-whatsapp"></a></li>
 
-                            <li><a href="#" class="social-icon-link bi-instagram"></a></li>
+                            <li><a href="https://www.instagram.com/sitelectronics" class="social-icon-link bi-instagram"></a></li>
 
-                            <li><a href="#" class="social-icon-link bi-youtube"></a></li>
+                            <li><a href="https://www.youtube.com/channel/UC5CwRWK64xlF5-X060Nrqkg" class="social-icon-link bi-youtube"></a></li>
                         </ul>
                     </div>
 
