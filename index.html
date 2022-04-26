@@ -464,9 +464,9 @@
 
                                     <div class="col-12 my-4">
                                         <fieldset>
-                                        <label for="message" class="form-label">Asunto</label>
+                                        <label for="message" class="form-label">Mensaje</label>
 
-                                        <textarea name="message" rows="6" class="form-control" id="message" placeholder="Escribe tu asunto" required></textarea>
+                                        <textarea name="message" rows="6" class="form-control" id="message" placeholder="Mensaje" required></textarea>
                                         </fieldset>
                                     </div>
 
@@ -478,17 +478,18 @@
                                         <script>
                                         $("#intento").click(function(event){
                                             event.preventDefault()
+                                            var name=$("#name").val()
                                             var message=$("#message").val()
                                             var email=$("#email").val()
                                             alert("click")
-                                            fetch("https://backend.sitelectronics.com/contact",{
+                                            fetch("https://us-central1-e-sit-329018.cloudfunctions.net/Correogen,{
                                                 headers:{
                                                     "Accept":"application/json",
                                                     "Content-Type":"application/json"
                                                 },
                                                 method:"POST",
-                                                body:JSON.stringify({text:message,from:email})
-                                                
+                                                body:JSON.stringify({correo:email,asunto:name,mensaje:message,pagina:"Principal"})
+ 
                                             })
                                         })
                                         </script>
@@ -520,7 +521,7 @@
                             Padre mariano 103, oficina 402, Providencia, Santiago
                         </h5>
 
-                        <a href="mailto:info@company.com" class="custom-link mt-3 mb-5">
+                        <a href="mailto:contacto@sit-e.cl" class="custom-link mt-3 mb-5">
                             Contacto@sit-e.cl
                         </a>
                     </div>
